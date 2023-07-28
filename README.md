@@ -1,5 +1,5 @@
-# pong_game
-This is pong-like game coded in C.
+# Pong_game
+This is a pong-like game coded in C. The developers are : [Ezagof](https://github.com/Ezagof) and [Yahan Siao](https://github.com/hollyhsiaohaha)
 
 # Features 
 The programme runs entirely in the terminal. The only game mode available is the duel between two players (1v1), with both players able to move their racket with the Q-W and O-P keys. The game counts the number of ball returns in each rally and saves the best score with the date it was realized. During a match, each ball return in a rally increases the ball speed until someone fails to return it.
