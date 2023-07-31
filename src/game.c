@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pong_game.h"
+#include "../headers/main_header.h"
 
 void	start_game(int max_y, int max_x)
 {

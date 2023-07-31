@@ -6,7 +6,7 @@ FLAGS = -Wall -Werror -Wextra
 
 LDFLAGS = -lncurses
 
-HEADER = pong_game.h
+HEADER_DIR = headers/
 
 SRC = ./src/main.c \
 	  ./src/menus.c \
@@ -20,7 +20,7 @@ $(NAME): $(OBJ)
 	$(CC) -o $@ $^ $(FLAGS) $(LDFLAGS)
 
 %.o: %.c 
-	$(CC) -c -o $@ $^ $(FLAGS) -I $(HEADER)
+	$(CC) -c -o $@ $^ $(FLAGS) -I $(HEADER_DIR)
 
 .PHONY: all
 
