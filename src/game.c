@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/28 20:41:01 by yahan             #+#    #+#             */
-/*   Updated: 2023/07/31 20:49:35 by yahan            ###   ########.fr       */
+/*   Created: 2023/08/01 00:04:55 by yahan             #+#    #+#             */
+/*   Updated: 2023/08/01 00:17:00 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../pong_game.h"
 
-int	main(void)
+void	start_game(int max_y, int max_x)
 {
-	int	max_y;
-	int	max_x;
+	WINDOW	*game_win;
+	char	wall_c;
+	int		ch;
 
-	initscr();
-	noecho();
-	cbreak();
-	keypad(stdscr, TRUE);
-	getmaxyx(stdscr, max_y, max_x);
-	main_menu(max_y, max_x);
-	endwin();
+	game_win = newwin(max_y, max_x, 0, 0);
+	refresh();
+	wall_c = WALL[0];
+	wborder(game_win, ' ', ' ', wall_c, wall_c, wall_c, wall_c, wall_c, wall_c);
+	mvwprintw(game_win, max_y / 2, 0, "Use your imagination for now :)");
+	wrefresh(game_win);
+	ch = getch();
+	clear();
+	if (ch)
+		delwin(game_win);
 }
