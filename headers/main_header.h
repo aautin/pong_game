@@ -6,12 +6,12 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:30:50 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/01 21:16:23 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/01 22:15:09 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PONG_GAME_H
-# define PONG_GAME_H
+#ifndef MAIN_HEADER_H
+# define MAIN_HEADER_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -43,12 +43,20 @@ typedef struct s_player {
 	int		y;
 }	t_player;
 
+typedef struct s_screen {
+	WINDOW		*win;
+	int			x;
+	int			y;
+}	t_screen;
+
 // menus.c
-void	main_menu(int max_y, int max_x);
-void	information_menu(int max_y, int max_x);
+void	main_menu(t_screen stsc);
+void	information_menu(t_screen stsc);
 
 // game.c
-void	start_game(int max_y, int max_x);
+void	start_game(t_screen stsc);
+void	init_game(t_screen gscr, t_ball *ball, t_player *p1, t_player *p2);
+void	update_window(t_screen gscr, t_ball ball, t_player p1, t_player p2);
 void	wprint_bar(WINDOW *win, t_player player);
 void	wprint_ball(WINDOW *win, t_ball ball);
 
