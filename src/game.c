@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 00:04:55 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/01 22:15:30 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/01 22:40:05 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ void	update_window(t_screen gscr, t_ball ball, t_player p1, t_player p2)
 void	init_game(t_screen gscr, t_ball *ball, t_player *p1, t_player *p2)
 {
 	ball->x = gscr.x / 2;
-	ball->y = gscr.y / 2;
+	ball->y = (gscr.y - 2) / 2;
 	p1->x = 1;
-	p1->y = gscr.y / 2 - BAR_LEN / 2;
+	p1->y = (gscr.y - 2) / 2 - BAR_LEN / 2;
 	p2->x = gscr.x - 2;
-	p2->y = gscr.y / 2 - BAR_LEN / 2;
+	p2->y = (gscr.y - 2) / 2 - BAR_LEN / 2;
 	update_window(gscr, *ball, *p1, *p2);
 	mvwprintw(gscr.win, gscr.y - 2, 0, "Press any key to start...");
 	refresh();
@@ -70,13 +70,13 @@ void	start_game(t_screen stsc)
 	{
 		ch = getch();
 		clear();
-		if (ch == 'q' || ch == 'Q')
+		if ((ch == 'q' || ch == 'Q') && player1.y > 1)
 			player1.y--;
-		else if (ch == 'a' || ch == 'A')
+		else if ((ch == 'a' || ch == 'A') && player1.y < gscr.y - 3 - BAR_LEN)
 			player1.y++;
-		if (ch == 'o' || ch == 'O')
+		if ((ch == 'o' || ch == 'O') && player2.y > 1)
 			player2.y--;
-		else if (ch == 'l' || ch == 'L')
+		else if ((ch == 'l' || ch == 'L') && player2.y < gscr.y - 3 - BAR_LEN)
 			player2.y++;
 		update_window(gscr, ball, player1, player2);
 	}

@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 19:46:26 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/01 21:57:06 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/01 22:19:17 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,15 @@
 void	main_menu(t_screen stsc)
 {
 	int		ch;
+	int		middle_x;
+	int		middle_y;
 
+	middle_y = (stsc.y - 2) / 2;
+	middle_x = (stsc.x - ft_strlen(ENTER_MESG)) / 2;
 	while (1)
 	{
-		mvprintw(stsc.y / 2, (stsc.x - ft_strlen(ENTER_MESG)) / 2, ENTER_MESG);
-		mvprintw(stsc.y / 2 + 1, (stsc.x - ft_strlen(ENTER_MESG)) / 2, I_MESG);
+		mvprintw(middle_y, middle_x, ENTER_MESG);
+		mvprintw(middle_y + 1, middle_x, I_MESG);
 		mvprintw(stsc.y - 2, 0, ANY_QUIT_MESG);
 		wprint_wall_board(stdscr, stsc.y, stsc.x);
 		ch = getch();
@@ -41,7 +45,7 @@ void	information_menu(t_screen stsc)
 
 	info_win = newwin(stsc.y, stsc.x, 0, 0);
 	refresh();
-	middle_y = stsc.y / 2;
+	middle_y = (stsc.y - 2) / 2;
 	middle_x = (stsc.x - ft_strlen(INFO_MESG1)) / 2;
 	mvwprintw(info_win, middle_y - 2, middle_x, INFO_MESG1);
 	mvwprintw(info_win, middle_y - 1, middle_x, INFO_MESG2);
