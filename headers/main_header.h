@@ -13,6 +13,9 @@
 #ifndef MAIN_HEADER_H
 # define MAIN_HEADER_H
 
+# include <stdio.h>																		// << to remove
+
+# include <fcntl.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <time.h>
@@ -37,7 +40,7 @@ typedef struct s_file {
 	char	*content;
 	int		size;
 	int		descriptor;
-}
+}	t_file;
 
 typedef struct s_ball {
 	char	c;
@@ -75,5 +78,9 @@ void	update_score(t_player player);
 // utils.c
 int		ft_strlen(char *str);
 void	wprint_wall_board(WINDOW *win, int max_y, int max_x);
+
+// file_treatment.c
+void	file_size(char *fl_name, t_file *fl);
+void	file_to_str(t_file *fl);
 
 #endif
