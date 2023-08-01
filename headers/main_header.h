@@ -33,11 +33,13 @@
 # define INFO_MESG5 "	Right-player --> O to move-up and L to move-down\n"
 
 typedef struct s_ball {
+	char	c;
 	int		x;
 	int		y;
 }	t_ball;
 
 typedef struct s_player {
+	char	c;
 	int		score;
 	int		x;
 	int		y;
