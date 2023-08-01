@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:30:50 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/01 00:16:12 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/01 14:37:21 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@
 # define WALL "="
 # define BAR "|"
 # define BALL "o"
-// # define WALL '='
-// # define BAR '|'
-// # define BALL 'o'
+# define BAR_LEN 4
 # define ENTER_MESG "Press ENTER to start the game"
 # define I_MESG "Press I for the informations menu"
 # define ANY_QUIT_MESG "Any other key entry will cause you to quit the game..."
@@ -35,13 +33,11 @@
 # define INFO_MESG5 "	Right-player --> O to move-up and L to move-down\n"
 
 typedef struct s_ball {
-	char	c;
 	int		x;
 	int		y;
 }	t_ball;
 
 typedef struct s_player {
-	char	c;
 	int		score;
 	int		x;
 	int		y;
@@ -53,14 +49,14 @@ void	information_menu(int max_y, int max_x);
 
 // game.c
 void	start_game(int max_y, int max_x);
-void	print_bar(t_player player);
-void	print_ball(t_ball ball);
+void	wprint_bar(WINDOW *win, t_player player);
+void	wprint_ball(WINDOW *win, t_ball ball);
 
 // score.c
 void	update_score(t_player player);
 
 // utils.c
 int		ft_strlen(char *str);
-void	wprint_line_board(WINDOW *win, int y, int max_x, char *str);
+void	wprint_wall_board(WINDOW *win, int max_y, int max_x);
 
 #endif
