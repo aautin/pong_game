@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pong_game.h"
+#include "../headers/main_header.h"
 
 int	ft_strlen(char *str)
 {
@@ -28,5 +28,5 @@ void	wprint_line_board(WINDOW *win, int y, int max_x, char *str)
 
 	i = -1;
 	while (++i < max_x)
-		mvwprintw(win, y, i, str);
+		mvwprintw(win, y, i, "%s",str);
 }
