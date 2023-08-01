@@ -6,11 +6,11 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 00:04:55 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/01 15:29:27 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/01 21:18:46 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pong_game.h"
+#include "../headers/main_header.h"
 
 void	wprint_bar(WINDOW *win, t_player player)
 {

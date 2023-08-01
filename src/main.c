@@ -6,11 +6,11 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:41:01 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/01 14:35:19 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/01 21:18:47 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pong_game.h"
+#include "../headers/main_header.h"
 
 int	main(void)
 {

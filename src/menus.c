@@ -6,11 +6,11 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 19:46:26 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/01 15:30:37 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/01 21:24:03 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../pong_game.h"
+#include "../headers/main_header.h"
 
 void	main_menu(int max_y, int max_x)
 {
@@ -23,7 +23,6 @@ void	main_menu(int max_y, int max_x)
 		mvprintw(max_y - 2, 0, ANY_QUIT_MESG);
 		wprint_wall_board(stdscr, max_y, max_x);
 		ch = getch();
-		clear();
 		if (ch == '\n')
 			start_game(max_y, max_x);
 		else if (ch == 'i' || ch == 'I')
@@ -31,7 +30,6 @@ void	main_menu(int max_y, int max_x)
 		else
 			break ;
 	}
-	endwin();
 }
 
 void	information_menu(int max_y, int max_x)
