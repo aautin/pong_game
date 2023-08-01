@@ -36,7 +36,6 @@
 # define INFO_MESG5 "	Right-player --> O to move-up and L to move-down\n"
 
 typedef struct s_file {
-	char	*name;
 	char	*content;
 	int		size;
 	int		descriptor;
@@ -61,6 +60,12 @@ typedef struct s_screen {
 	int			y;
 }	t_screen;
 
+typedef struct s_strpart {
+	int		from;
+	int		to;
+	char	*str;
+}	t_strpart;
+
 // menus.c
 void	main_menu(t_screen stsc);
 void	information_menu(t_screen stsc);
@@ -78,9 +83,10 @@ void	update_score(t_player player);
 // utils.c
 int		ft_strlen(char *str);
 void	wprint_wall_board(WINDOW *win, int max_y, int max_x);
+void	str_copy_print(t_strpart *str, char *src);
 
 // file_treatment.c
 void	file_size(char *fl_name, t_file *fl);
-void	file_to_str(t_file *fl);
+void	file_to_str(char *fl_name, t_file *fl);
 
 #endif

@@ -13,7 +13,7 @@ SRC = ./src/main.c \
 	  ./src/utils.c \
 	  ./src/game.c \
 	  ./src/score.c \
-	  file_treatment.c
+	  ./src/file_treatment.c
 
 OBJ = $(SRC:.c=.o)
 

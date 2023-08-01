@@ -25,7 +25,7 @@ void		file_size(char *fl_name, t_file *fl)
 	close(fl->descriptor);
 }
 
-void	file_to_str(t_file *fl)
+void	file_to_str(char *fl_name, t_file *fl)
 {
 	fl->descriptor = open(fl_name, O_RDONLY);
 	if (fl->descriptor == -1)

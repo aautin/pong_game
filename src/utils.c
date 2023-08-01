@@ -14,7 +14,7 @@
 
 int	ft_strlen(char *str)
 {
-	int	i;
+	int		i;
 
 	i = 0;
 	while (str[i])
@@ -33,4 +33,18 @@ void	wprint_wall_board(WINDOW *win, int max_y, int max_x)
 		mvwprintw(win, max_y - 3, i, "%s", WALL);
 		mvwprintw(win, max_y - 1, i, "%s", WALL);
 	}
+}
+
+void	str_copy_print(t_strpart *str, char *src)
+{
+	int		i;
+
+	str->str = (char *)malloc((str->to - str->from + 1) * sizeof(char));
+	i = 0;
+	while (str->from + i <= str->to)
+	{
+		str->str[i] = src[str->from + i];
+		i++;
+	}
+	str->str[str->to - str->from] = '\0';
 }
