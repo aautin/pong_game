@@ -32,6 +32,13 @@
 # define INFO_MESG4 "	Left-player  --> Q to move up and A to move down\n"
 # define INFO_MESG5 "	Right-player --> O to move-up and L to move-down\n"
 
+typedef struct s_file {
+	char	*name;
+	char	*content;
+	int		size;
+	int		descriptor;
+}
+
 typedef struct s_ball {
 	char	c;
 	int		x;
