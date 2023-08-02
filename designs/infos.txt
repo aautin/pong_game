@@ -1,0 +1,6 @@
+The single gamemode is a 1v1 between two players.
+Your goal ? Score 3 points before your opponent.
+
+Controls :
+    Left-player  --> Q to move up and A to move down
+    Right-player --> O to move-up and L to move-down

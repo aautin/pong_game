@@ -48,7 +48,7 @@ Score : X - X                                                           Longest 
 
                             Controls : 
                                 Left-player	 --> Q to move up and A to move down
-                                Right-player --> O to move-up and L to move-down}
+                                Right-player --> O to move-up and L to move-down
 
 
 

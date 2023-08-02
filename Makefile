@@ -12,7 +12,8 @@ SRC = ./src/main.c \
 	  ./src/menus.c \
 	  ./src/utils.c \
 	  ./src/game.c \
-	  ./src/score.c
+	  ./src/score.c \
+	  ./src/file_treatment.c
 
 OBJ = $(SRC:.c=.o)
 
