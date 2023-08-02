@@ -15,55 +15,49 @@
 void	main_menu(t_screen stsc)
 {
 	int		ch;
-	int		middle_x;
-	int		middle_y;
 
-	middle_y = (stsc.y - 2) / 2;
-	middle_x = (stsc.x - ft_strlen(ENTER_MESG)) / 2;
 	while (1)
 	{
 		refresh();
-		mvprintw(middle_y, middle_x, ENTER_MESG);
-		mvprintw(middle_y + 1, middle_x, I_MESG);
-		mvprintw(stsc.y - 2, 0, ANY_QUIT_MESG);
+		print_menu_middle(stsc, "designs/start.txt", &ch);
 		wprint_wall_board(stsc.win, stsc.y, stsc.x);
-		ch = getch();
 		if (ch == '\n')
 			start_game(stsc);
 		else if (ch == 'i' || ch == 'I')
-			information_menu(stsc);
+			print_menu_middle(stsc, "designs/infos.txt", &ch);
 		else
 			break ;
 	}
 }
 
-void	information_menu(t_screen st_sc)
+void	print_menu_middle(t_screen sc, char *fl_name, int *ch)
 {
-	t_screen	info;
 	t_file		fl;
+	t_file		fl2;
 	t_strpart	str;
-	int			i;
 
-	info.win = newwin(st_sc.y - 2, st_sc.x, 1, 0);
-	info.x = st_sc.x;
-	info.y = st_sc.y - 2;
-	fl.size = file_size("designs/infos.txt");
-	file_to_str("designs/infos.txt", &fl);
-	i = 4;
+	clear();
+	file_to_str(fl_name, &fl);
 	str.from = 0;
+	fl.lines_nb = fl.lines_nb / 2;
 	while (fl.content[str.from])
 	{
 		str.to = str.from;
 		while (fl.content[str.to] != '\n' && fl.content[str.to])
 			str.to++;
 		str_copy_print(&str, fl.content);
-		mvwprintw(info.win, (info.y / 2) - i--, info.x / 2 - 30, "%s", str.str);
+		mvwprintw(sc.win, (sc.y / 2) - fl.lines_nb--, sc.x / 2 - 30, "%s", str.str);
 		str.from = str.to + 1;
 		free(str.str);
 	}
-	wprint_wall_board(st_sc.win, st_sc.y, st_sc.x);
-	wrefresh(info.win);
-	getch();
+	wprint_wall_board(sc.win, sc.y, sc.x);
+	fl2.name = file_name_to_its_v2(fl_name);
+	file_to_str(fl2.name, &fl2);
+	mvwprintw(sc.win, sc.y - 2, 0, "%s", fl2.content);
+	free(fl2.name);
+	free(fl.content);
+	free(fl2.content);
+	refresh();
+	*ch = getch();
 	clear();
-	delwin(info.win);
 }

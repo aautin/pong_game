@@ -1,2 +1,2 @@
-Press ENTER to start the game
-Press I for the informations menu
+        Press ENTER to start the game
+        Press I for the informations menu

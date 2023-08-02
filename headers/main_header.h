@@ -25,16 +25,14 @@
 # define BAR "|"
 # define BALL "o"
 # define BAR_LEN 4
-# define ENTER_MESG "Press ENTER to start the game"
-# define I_MESG "Press I for the informations menu"
-# define ANY_QUIT_MESG "Any other key entry will cause you to quit the game..."
-# define ANY_MENU_MESG "Press any key to go back to the menu..."
 
 
 typedef struct s_file {
 	char	*content;
+	char	*name;
 	int		size;
 	int		descriptor;
+	int		lines_nb;
 }	t_file;
 
 typedef struct s_ball {
@@ -64,7 +62,7 @@ typedef struct s_strpart {
 
 // menus.c
 void	main_menu(t_screen stsc);
-void	information_menu(t_screen stsc);
+void	print_menu_middle(t_screen sc, char *fl_name, int *ch);
 
 // game.c
 void	start_game(t_screen stsc);
@@ -84,5 +82,6 @@ void	str_copy_print(t_strpart *str, char *src);
 // file_treatment.c
 int		file_size(char *fl_name);
 void	file_to_str(char *fl_name, t_file *fl);
+char	*file_name_to_its_v2(char *fl_name);
 
 #endif
