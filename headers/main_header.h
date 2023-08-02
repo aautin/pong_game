@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:30:50 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/02 22:29:15 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/02 23:56:28 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,13 @@ void	information_menu(t_screen stsc);
 
 // game.c
 void	start_game(t_screen stsc);
-void	init_gscr(t_screen *gscr, t_screen *stsc);
-void	init_game(t_screen gscr, t_ball *ball, t_players *players);
+void	init_screens(t_screen *gscr, t_screen *scscr, t_screen *stsc);
+void	init_game(t_screen gscr, t_screen scscr, t_ball *ball, t_players *ps);
 void	update_window(t_screen gscr, t_ball ball, t_players players);
 
 // ball.c
 void	wprint_ball(WINDOW *win, t_ball ball);
+void	move_ball(t_ball *b, t_players *ps, t_screen game_scr);
 
 // player.c
 void	wprint_bar(WINDOW *win, t_players players);

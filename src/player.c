@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:03:07 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/02 22:45:17 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/02 23:36:37 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	wprint_bar(WINDOW *gwin, t_players players)
 
 void	move_players(int ch, t_players *players, t_screen gscr)
 {
-	if ((ch == 'q' || ch == 'Q') && players->y1 > 1)
+	if ((ch == 'q' || ch == 'Q') && players->y1 > 0)
 		players->y1--;
-	else if ((ch == 'a' || ch == 'A') && players->y1 < gscr.y - 3 - BAR_LEN)
+	else if ((ch == 'a' || ch == 'A') && players->y1 < gscr.y - BAR_LEN)
 		players->y1++;
-	if ((ch == 'o' || ch == 'O') && players->y2 > 1)
+	if ((ch == 'o' || ch == 'O') && players->y2 > 0)
 		players->y2--;
-	else if ((ch == 'l' || ch == 'L') && players->y2 < gscr.y - 3 - BAR_LEN)
+	else if ((ch == 'l' || ch == 'L') && players->y2 < gscr.y - BAR_LEN)
 		players->y2++;
 }
