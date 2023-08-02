@@ -6,31 +6,40 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 18:03:07 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/02 20:06:23 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/02 22:45:17 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/main_header.h"
 
-void	wprint_bar(WINDOW *win, t_player player)
+void	wprint_bar(WINDOW *gwin, t_players players)
 {
 	int	i;
 
 	i = -1;
 	while (++i < BAR_LEN)
-		mvwprintw(win, player.y + i, player.x, BAR);
+	{
+		mvwprintw(gwin, players.y1 + i, players.x1, BAR);
+	}
 	refresh();
-	wrefresh(win);
+	wrefresh(gwin);
+	i = -1;
+	while (++i < BAR_LEN)
+	{
+		mvwprintw(gwin, players.y2 + i, players.x2, BAR);
+	}
+	refresh();
+	wrefresh(gwin);
 }
 
-void	move_player(int ch, t_player *p1, t_player *p2, t_screen gscr)
+void	move_players(int ch, t_players *players, t_screen gscr)
 {
-	if ((ch == 'q' || ch == 'Q') && p1->y > 1)
-		p1->y--;
-	else if ((ch == 'a' || ch == 'A') && p1->y < gscr.y - 3 - BAR_LEN)
-		p1->y++;
-	if ((ch == 'o' || ch == 'O') && p2->y > 1)
-		p2->y--;
-	else if ((ch == 'l' || ch == 'L') && p2->y < gscr.y - 3 - BAR_LEN)
-		p2->y++;
+	if ((ch == 'q' || ch == 'Q') && players->y1 > 1)
+		players->y1--;
+	else if ((ch == 'a' || ch == 'A') && players->y1 < gscr.y - 3 - BAR_LEN)
+		players->y1++;
+	if ((ch == 'o' || ch == 'O') && players->y2 > 1)
+		players->y2--;
+	else if ((ch == 'l' || ch == 'L') && players->y2 < gscr.y - 3 - BAR_LEN)
+		players->y2++;
 }
