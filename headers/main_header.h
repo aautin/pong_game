@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:30:50 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/01 22:15:09 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/02 23:56:28 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define BAR "|"
 # define BALL "o"
 # define BAR_LEN 4
-
+# define DELAY 30000
 
 typedef struct s_file {
 	char	*content;
@@ -39,14 +39,19 @@ typedef struct s_ball {
 	char	c;
 	int		x;
 	int		y;
+	int		vx;
+	int		vy;
 }	t_ball;
 
-typedef struct s_player {
+typedef struct s_players {
 	char	c;
-	int		score;
-	int		x;
-	int		y;
-}	t_player;
+	int		score1;
+	int		x1;
+	int		y1;
+	int		score2;
+	int		x2;
+	int		y2;
+}	t_players;
 
 typedef struct s_screen {
 	WINDOW		*win;
@@ -66,13 +71,20 @@ void	print_menu_middle(t_screen sc, char *fl_name, int *ch);
 
 // game.c
 void	start_game(t_screen stsc);
-void	init_game(t_screen gscr, t_ball *ball, t_player *p1, t_player *p2);
-void	update_window(t_screen gscr, t_ball ball, t_player p1, t_player p2);
-void	wprint_bar(WINDOW *win, t_player player);
+void	init_screens(t_screen *gscr, t_screen *scscr, t_screen *stsc);
+void	init_game(t_screen gscr, t_screen scscr, t_ball *ball, t_players *ps);
+void	update_window(t_screen gscr, t_ball ball, t_players players);
+
+// ball.c
 void	wprint_ball(WINDOW *win, t_ball ball);
+void	move_ball(t_ball *b, t_players *ps, t_screen game_scr);
+
+// player.c
+void	wprint_bar(WINDOW *win, t_players players);
+void	move_players(int ch, t_players *players, t_screen gscr);
 
 // score.c
-void	update_score(t_player player);
+void	update_score(t_players players);
 
 // utils.c
 int		ft_strlen(char *str);

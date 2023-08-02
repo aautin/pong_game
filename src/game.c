@@ -6,79 +6,80 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 00:04:55 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/01 22:40:05 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/02 23:56:32 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../headers/main_header.h"
 
-void	wprint_bar(WINDOW *win, t_player player)
+void	update_window(t_screen gscr, t_ball ball, t_players players)
 {
-	int	i;
-
-	i = -1;
-	while (++i < BAR_LEN)
-		mvwprintw(win, player.y + i, player.x, BAR);
-	refresh();
-	wrefresh(win);
-}
-
-void	wprint_ball(WINDOW *win, t_ball ball)
-{
-	mvwprintw(win, ball.y, ball.x, BALL);
-	refresh();
-	wrefresh(win);
-}
-
-void	update_window(t_screen gscr, t_ball ball, t_player p1, t_player p2)
-{
+	wclear(gscr.win);
 	wprint_ball(gscr.win, ball);
-	wprint_bar(gscr.win, p1);
-	wprint_bar(gscr.win, p2);
-	wprint_wall_board(gscr.win, gscr.y, gscr.x);
+	wprint_bar(gscr.win, players);
 	refresh();
 	wrefresh(gscr.win);
 }
 
-void	init_game(t_screen gscr, t_ball *ball, t_player *p1, t_player *p2)
+void	init_screens(t_screen *gscr, t_screen *scscr, t_screen *stsc)
 {
+	gscr->x = stsc->x;
+	gscr->y = stsc->y - 4;
+	gscr->win = newwin(gscr->y, gscr->x, 1, 0);
+	scscr->x = stsc->x;
+	scscr->y = 1;
+	scscr->win = newwin(scscr->y, scscr->x, stsc->y - 2, 0);
+}
+
+void	init_game(t_screen gscr, t_screen scscr, t_ball *ball, t_players *ps)
+{
+	srand(time(NULL));
 	ball->x = gscr.x / 2;
-	ball->y = (gscr.y - 2) / 2;
-	p1->x = 1;
-	p1->y = (gscr.y - 2) / 2 - BAR_LEN / 2;
-	p2->x = gscr.x - 2;
-	p2->y = (gscr.y - 2) / 2 - BAR_LEN / 2;
-	update_window(gscr, *ball, *p1, *p2);
-	mvwprintw(gscr.win, gscr.y - 2, 0, "Press any key to start...");
+	ball->y = gscr.y / 2;
+	ball->vx = 1 + (rand() % 2) * (-2);
+	ball->vy = 0;
+	ps->x1 = 1;
+	ps->y1 = gscr.y / 2 - BAR_LEN / 2;
+	ps->score1 = 0;
+	ps->x2 = gscr.x - 2;
+	ps->y2 = gscr.y / 2 - BAR_LEN / 2;
+	ps->score2 = 0;
+	update_window(gscr, *ball, *ps);
+	mvwprintw(scscr.win, 0, 0, "Press any key to start...");
 	refresh();
 	wrefresh(gscr.win);
+	wrefresh(scscr.win);
+	getch();
+	wclear(scscr.win); // to be move to score_update()
+	refresh(); // to be move to score_update()
+	wrefresh(scscr.win); // to be move to score_update()
 }
 
 void	start_game(t_screen stsc)
 {
 	int			ch;
 	t_ball		ball;
-	t_player	player1;
-	t_player	player2;
-	t_screen	gscr;
+	t_players	players;
+	t_screen	game_scr;
+	t_screen	score_scr;
 
-	gscr.x = stsc.x;
-	gscr.y = stsc.y;
-	gscr.win = newwin(stsc.y, stsc.x, 0, 0);
-	init_game(gscr, &ball, &player1, &player2);
+	init_screens(&game_scr, &score_scr, &stsc);
+	init_game(game_scr, score_scr, &ball, &players);
+	nodelay(game_scr.win, TRUE);
+	nodelay(score_scr.win, TRUE);
+	nodelay(stsc.win, TRUE);
 	while (1)
 	{
 		ch = getch();
-		clear();
-		if ((ch == 'q' || ch == 'Q') && player1.y > 1)
-			player1.y--;
-		else if ((ch == 'a' || ch == 'A') && player1.y < gscr.y - 3 - BAR_LEN)
-			player1.y++;
-		if ((ch == 'o' || ch == 'O') && player2.y > 1)
-			player2.y--;
-		else if ((ch == 'l' || ch == 'L') && player2.y < gscr.y - 3 - BAR_LEN)
-			player2.y++;
-		update_window(gscr, ball, player1, player2);
+		if (ch)
+			move_players(ch, &players, game_scr);
+		move_ball(&ball, &players, game_scr);
+		update_window(game_scr, ball, players);
+		usleep(DELAY);
 	}
-	delwin(gscr.win);
+	nodelay(game_scr.win, FALSE);
+	nodelay(score_scr.win, FALSE);
+	nodelay(stsc.win, FALSE);
+	delwin(score_scr.win);
+	delwin(game_scr.win);
 }
