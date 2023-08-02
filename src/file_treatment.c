@@ -12,17 +12,20 @@
 
 #include "../headers/main_header.h"
 
-void		file_size(char *fl_name, t_file *fl)
+int		file_size(char *fl_name)
 {
-	fl->size = 1;
-	fl->descriptor = open(fl_name, O_RDONLY);
-	if (fl->descriptor == -1)
-		return ;
-	fl->content = (char *)malloc(sizeof(char));
-	while (read(fl->descriptor, fl->content, 1))
-		fl->size++;
-	free(fl->content);
-	close(fl->descriptor);
+	t_file		fl;
+
+	fl.size = 1;
+	fl.descriptor = open(fl_name, O_RDONLY);
+	if (fl.descriptor == -1)
+		return (0);
+	fl.content = (char *)malloc(sizeof(char));
+	while (read(fl.descriptor, fl.content, 1))
+		fl.size++;
+	close(fl.descriptor);
+	free(fl.content);
+	return (fl.size);
 }
 
 void	file_to_str(char *fl_name, t_file *fl)

@@ -22,6 +22,7 @@ void	main_menu(t_screen stsc)
 	middle_x = (stsc.x - ft_strlen(ENTER_MESG)) / 2;
 	while (1)
 	{
+		refresh();
 		mvprintw(middle_y, middle_x, ENTER_MESG);
 		mvprintw(middle_y + 1, middle_x, I_MESG);
 		mvprintw(stsc.y - 2, 0, ANY_QUIT_MESG);
@@ -38,27 +39,31 @@ void	main_menu(t_screen stsc)
 
 void	information_menu(t_screen st_sc)
 {
-	t_screen	info_sc;
+	t_screen	info;
 	t_file		fl;
 	t_strpart	str;
+	int			i;
 
-	info_sc.win = newwin(st_sc.y - 2, st_sc.x, 1, 0);
-	info_sc.x = st_sc.x;
-	info_sc.y = st_sc.y - 2;
-	file_size("../designs/infos.txt", &fl);
-	file_to_str("../designs/infos.txt", &fl);
+	info.win = newwin(st_sc.y - 2, st_sc.x, 1, 0);
+	info.x = st_sc.x;
+	info.y = st_sc.y - 2;
+	fl.size = file_size("designs/infos.txt");
+	file_to_str("designs/infos.txt", &fl);
+	i = 4;
 	str.from = 0;
 	while (fl.content[str.from])
 	{
-		str.to = str.from + 1;
+		str.to = str.from;
 		while (fl.content[str.to] != '\n' && fl.content[str.to])
 			str.to++;
 		str_copy_print(&str, fl.content);
-		mvwprintw(info_sc.win, info_sc.y / 2 - 1, info_sc.x / 2 - 5, "%s", str.str);
-		str.from = str.to;
+		mvwprintw(info.win, (info.y / 2) - i--, info.x / 2 - 30, "%s", str.str);
+		str.from = str.to + 1;
 		free(str.str);
 	}
-	wrefresh(info_sc.win);
+	wprint_wall_board(st_sc.win, st_sc.y, st_sc.x);
+	wrefresh(info.win);
 	getch();
-	delwin(info_sc.win);
+	clear();
+	delwin(info.win);
 }
