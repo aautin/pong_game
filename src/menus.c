@@ -18,25 +18,36 @@ void	main_menu(t_screen stsc)
 
 	while (1)
 	{
+		clear();
 		refresh();
-		print_menu_middle(stsc, "designs/start.txt", &ch);
+		print_menu_middle(stsc, "designs/start.txt");
 		wprint_wall_board(stsc.win, stsc.y, stsc.x);
+		ch = getch();
 		if (ch == '\n')
+		{
 			start_game(stsc);
+			clear();
+			print_menu_middle(stsc, "designs/end.txt");
+			ch = getch();
+		}
 		else if (ch == 'i' || ch == 'I')
-			print_menu_middle(stsc, "designs/infos.txt", &ch);
+		{
+			clear();
+			print_menu_middle(stsc, "designs/infos.txt");
+			ch = getch();
+			clear();
+		}
 		else
 			break ;
 	}
 }
 
-void	print_menu_middle(t_screen sc, char *fl_name, int *ch)
+void	print_menu_middle(t_screen sc, char *fl_name)
 {
 	t_file		fl;
 	t_file		fl2;
 	t_strpart	str;
 
-	clear();
 	file_to_str(fl_name, &fl);
 	str.from = 0;
 	fl.lines_nb = fl.lines_nb / 2;
@@ -54,10 +65,22 @@ void	print_menu_middle(t_screen sc, char *fl_name, int *ch)
 	fl2.name = file_name_to_its_v2(fl_name);
 	file_to_str(fl2.name, &fl2);
 	mvwprintw(sc.win, sc.y - 2, 0, "%s", fl2.content);
-	free(fl2.name);
-	free(fl.content);
-	free(fl2.content);
+	free_strs(fl2.name, fl.content, fl2.content, NULL, NULL);
 	refresh();
-	*ch = getch();
-	clear();
+}
+
+
+void	update_score(t_players players, t_screen *sc_scr)
+{
+	char	score_p1;
+	char	score_p2;
+
+	score_p1 = players.score1 + 48;
+	score_p2 = players.score2 + 48;
+	mvwprintw(sc_scr->win, 0, 0,"Score :   -  ");
+	mvwprintw(sc_scr->win, 0, sc_scr->x - 28,"Longest rally :   (  /  /  )");
+	mvwprintw(sc_scr->win, 0, 8,"%c", score_p1);
+	mvwprintw(sc_scr->win, 0, 12,"%c", score_p2);
+	while (getch() == ERR)
+	wrefresh(sc_scr->win);
 }
