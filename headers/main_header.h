@@ -62,4 +62,7 @@ int		file_size(char *fl_name);
 void	file_to_str(char *fl_name, t_file *fl);
 char	*file_name_to_its_v2(char *fl_name);
 
+// convert_types.c
+int		atoi(char *number);
+
 #endif

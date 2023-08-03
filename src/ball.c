@@ -28,6 +28,7 @@ void	move_ball(t_ball *b, t_players *ps, t_screen game_scr)
 	{
 		b->vy = (rand() % 3 - 1);
 		b->vx *= -1;
+		ps->returns_nb++;
 	}
 	b->x += b->vx;
 	b->y += b->vy;

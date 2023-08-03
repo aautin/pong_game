@@ -43,6 +43,7 @@ void	init_game(t_screen gscr, t_screen scscr, t_ball *ball, t_players *ps)
 	ps->y1 = gscr.y / 2 - BAR_LEN / 2;
 	ps->x2 = gscr.x - 2;
 	ps->y2 = gscr.y / 2 - BAR_LEN / 2;
+	ps->returns_nb = 0;
 	update_window(gscr, *ball, *ps);
 	mvwprintw(scscr.win, 0, 0, "Press any key to start...");
 	refresh();

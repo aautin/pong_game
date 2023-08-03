@@ -39,7 +39,7 @@ typedef struct s_players {
 	int		score2;
 	int		x2;
 	int		y2;
-	int		ball_returns_nb;
+	int		returns_nb;
 }	t_players;
 
 typedef struct s_screen {

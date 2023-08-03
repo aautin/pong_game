@@ -68,19 +68,3 @@ void	print_menu_middle(t_screen sc, char *fl_name)
 	free_strs(fl2.name, fl.content, fl2.content, NULL, NULL);
 	refresh();
 }
-
-
-void	update_score(t_players players, t_screen *sc_scr)
-{
-	char	score_p1;
-	char	score_p2;
-
-	score_p1 = players.score1 + 48;
-	score_p2 = players.score2 + 48;
-	mvwprintw(sc_scr->win, 0, 0,"Score :   -  ");
-	mvwprintw(sc_scr->win, 0, sc_scr->x - 28,"Longest rally :   (  /  /  )");
-	mvwprintw(sc_scr->win, 0, 8,"%c", score_p1);
-	mvwprintw(sc_scr->win, 0, 12,"%c", score_p2);
-	while (getch() == ERR)
-	wrefresh(sc_scr->win);
-}
