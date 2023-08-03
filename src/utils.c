@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 20:42:01 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/01 21:20:27 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/03 15:10:25 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,21 @@ void	str_copy_print(t_strpart *str, char *src)
 		i++;
 	}
 	str->str[str->to - str->from] = '\0';
+}
+
+
+void	nodelay_switch(WINDOW *w1, WINDOW *w2, WINDOW *w3, int sw)
+{
+	if (sw == 1)
+	{
+		nodelay(w1, TRUE);
+		nodelay(w2, TRUE);
+		nodelay(w3, TRUE);
+	}
+	else if (sw == 0)
+	{
+		nodelay(w1, FALSE);
+		nodelay(w2, FALSE);
+		nodelay(w3, FALSE);
+	}
 }

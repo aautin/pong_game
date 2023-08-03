@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:30:50 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/02 23:56:28 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/03 16:14:21 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ void	move_ball(t_ball *b, t_players *ps, t_screen game_scr);
 // player.c
 void	wprint_bar(WINDOW *win, t_players players);
 void	move_players(int ch, t_players *players, t_screen gscr);
+int		compl_or_add(t_screen gscr, t_screen scscr, t_ball *b, t_players *ps);
 
 // score.c
 void	update_score(t_players players);
@@ -90,6 +91,7 @@ void	update_score(t_players players);
 int		ft_strlen(char *str);
 void	wprint_wall_board(WINDOW *win, int max_y, int max_x);
 void	str_copy_print(t_strpart *str, char *src);
+void	nodelay_switch(WINDOW *w1, WINDOW *w2, WINDOW *w3, int sw);
 
 // file_treatment.c
 int		file_size(char *fl_name);
