@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:30:50 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/03 16:14:21 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/04 15:33:17 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int		ft_strlen(char *str);
 void	wprint_wall_board(WINDOW *win, int max_y, int max_x);
 void	str_copy_print(t_strpart *str, char *src);
 void	nodelay_switch(WINDOW *w1, WINDOW *w2, WINDOW *w3, int sw);
+int		rand_int(int max);
 void	free_strs(char *str1, char *str2, char *str3, char *str4, char *str5);
 
 // file_treatment.c

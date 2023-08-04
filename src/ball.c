@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/02 17:04:59 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/03 16:14:33 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/04 15:37:10 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	move_ball(t_ball *b, t_players *ps, t_screen game_scr)
 	if ((b->x == ps->x1 + 1 && b->y >= ps->y1 && b->y <= ps->y1 + BAR_LEN)
 		|| (b->x == ps->x2 - 1 && b->y >= ps->y2 && b->y <= ps->y2 + BAR_LEN))
 	{
-		b->vy = (rand() % 3 - 1);
+		b->vy = (rand_int(100) % 3 - 1);
 		b->vx *= -1;
 		ps->returns_nb++;
 	}
