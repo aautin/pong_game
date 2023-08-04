@@ -44,8 +44,7 @@ void	move_players(int ch, t_players *players, t_screen gscr)
 		players->y2++;
 }
 
-// just a draft for score counting should be revised in update_score
-int	compl_or_add(t_screen gscr, t_screen scscr, t_ball *b, t_players *ps)
+int	compl_or_add(t_screen gscr, t_screen *scscr, t_ball *b, t_players *ps)
 {
 	if (b->x == 0 || b->x == gscr.x - 1)
 	{
@@ -55,7 +54,8 @@ int	compl_or_add(t_screen gscr, t_screen scscr, t_ball *b, t_players *ps)
 			ps->score1++;
 		if (ps->score1 == 3 || ps->score2 == 3)
 			return (1);
-		init_game(gscr, scscr, b, ps);
+		init_game(gscr, *scscr, b, ps);
+		update_score(*ps, scscr);
 	}
 	return (0);
 }
