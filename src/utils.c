@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/31 20:42:01 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/03 15:10:25 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/04 15:47:38 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,15 @@ void	nodelay_switch(WINDOW *w1, WINDOW *w2, WINDOW *w3, int sw)
 		nodelay(w2, FALSE);
 		nodelay(w3, FALSE);
 	}
+}
+
+int	rand_int(int max)
+{
+	int				random_number;
+	struct timespec	ts;
+
+	clock_gettime(CLOCK_REALTIME, &ts);
+	random_number = (int)(((double)ts.tv_nsec / 1000000000.0) * max);
+	printf("%ld\n", ts.tv_nsec);
+	return (random_number);
 }

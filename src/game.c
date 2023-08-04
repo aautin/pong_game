@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 00:04:55 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/03 16:17:10 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/04 15:37:07 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,9 @@ void	init_screens(t_screen *gscr, t_screen *scscr, t_screen *stsc)
 void	init_game(t_screen gscr, t_screen scscr, t_ball *ball, t_players *ps)
 {
 	nodelay_switch(gscr.win, scscr.win, stdscr, 0);
-	srand(time(NULL));
 	ball->x = gscr.x / 2;
 	ball->y = gscr.y / 2;
-	ball->vx = 1 + (rand() % 2) * (-2);
+	ball->vx = 1 + (rand_int(100) % 2) * (-2);
 	ball->vy = 0;
 	ps->x1 = 1;
 	ps->y1 = gscr.y / 2 - BAR_LEN / 2;
