@@ -63,6 +63,7 @@ void	file_to_str(char *fl_name, t_file *fl);
 char	*file_name_to_its_v2(char *fl_name);
 
 // convert_types.c
-int		atoi(char *number);
+char	*ft_itoa(int	number);
+int		ft_atoi(char *number);
 
 #endif

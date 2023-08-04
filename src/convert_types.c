@@ -12,34 +12,34 @@
 
 #include "../headers/main_header.h"
 
-int		atoi(char *number)
+int		ft_atoi(char *number)
 {
 	int		i;
-	int		number;
+	int		nb;
 
 	i = 0;
 
 	while ('0' > number[i] || number[i] > '9')
 		i++;
-	number = 0;
+	nb = 0;
 	while ('0' <= number[i] && number[i] <= '9')
 	{
-		number = (number * 10) + (number[i] - 48);
+		nb = (nb * 10) + (number[i] - 48);
 		i++;
 	}
-	return (number);
+	return (nb);
 }
 
-char	*itoa(int	number)
+char	*ft_itoa(int number)
 {
 	int		i;
 	int		size;
 	char	*str;
 
-	size = 0
+	size = 0;
 	while(number)
 	{
-		number = number / 10
+		number = number / 10;
 		size++;
 	}
 	str = (char *)malloc((size + 1) * sizeof(char));
@@ -47,8 +47,9 @@ char	*itoa(int	number)
 	i = 0;
 	while(i >= 0)
 	{
-		str[i] = number
+		str[i] = number;
 		i++;
 	}
+	return (str);
 	// to be continued...
 }
