@@ -76,3 +76,18 @@ int	rand_int(int max)
 	printf("%ld\n", ts.tv_nsec);
 	return (random_number);
 }
+
+void	free_strs(char *str1, char *str2, char *str3, char *str4, char *str5)
+{
+	// simple function used to free 0 to 5 strings.
+	if (str1 != NULL)
+		free(str1);
+	if (str2 != NULL)
+		free(str2);
+	if (str3 != NULL)
+		free(str3);
+	if (str4 != NULL)
+		free(str4);
+	if (str5 != NULL)
+		free(str5);
+}

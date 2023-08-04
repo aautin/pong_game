@@ -15,7 +15,8 @@ SRC = ./src/main.c \
 	  ./src/player.c \
 	  ./src/ball.c \
 	  ./src/score.c \
-	  ./src/file_treatment.c
+	  ./src/file_treatment.c \
+	  ./src/convert_types.c
 
 OBJ = $(SRC:.c=.o)
 

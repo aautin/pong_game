@@ -42,6 +42,7 @@ void	init_game(t_screen gscr, t_screen scscr, t_ball *ball, t_players *ps)
 	ps->y1 = gscr.y / 2 - BAR_LEN / 2;
 	ps->x2 = gscr.x - 2;
 	ps->y2 = gscr.y / 2 - BAR_LEN / 2;
+	ps->returns_nb = 0;
 	update_window(gscr, *ball, *ps);
 	mvwprintw(scscr.win, 0, 0, "Press any key to start...");
 	refresh();
@@ -66,12 +67,13 @@ void	start_game(t_screen stsc)
 	players.score2 = 0;
 	init_screens(&game_scr, &score_scr, &stsc);
 	init_game(game_scr, score_scr, &ball, &players);
+	update_score(players, &score_scr);
 	while (1)
 	{
 		ch = getch();
 		if (ch)
 			move_players(ch, &players, game_scr);
-		if (compl_or_add(game_scr, score_scr, &ball, &players))
+		if (compl_or_add(game_scr, &score_scr, &ball, &players))
 			break ;
 		move_ball(&ball, &players, game_scr);
 		update_window(game_scr, ball, players);
