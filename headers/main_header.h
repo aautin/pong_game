@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:30:50 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/04 15:33:17 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/05 22:18:32 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define BAR "|"
 # define BALL "o"
 # define BAR_LEN 4
-# define DELAY 30000
+# define DELAY 20000
 
 // menus.c
 void	main_menu(t_screen stsc);
@@ -55,7 +55,6 @@ int		ft_strlen(char *str);
 void	wprint_wall_board(WINDOW *win, int max_y, int max_x);
 void	str_copy_print(t_strpart *str, char *src);
 void	nodelay_switch(WINDOW *w1, WINDOW *w2, WINDOW *w3, int sw);
-int		rand_int(int max);
 void	free_strs(char *str1, char *str2, char *str3, char *str4, char *str5);
 
 // file_treatment.c
@@ -66,5 +65,10 @@ char	*file_name_to_its_v2(char *fl_name);
 // convert_types.c
 char	*ft_itoa(int	number);
 int		ft_atoi(char *number);
+
+// random.c
+int		rand_int(int max); // to be removed
+float	rand_float(int max);
+float	rand_negative(void);
 
 #endif
