@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 00:04:55 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/04 15:37:07 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/05 22:09:09 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	init_game(t_screen gscr, t_screen scscr, t_ball *ball, t_players *ps)
 	nodelay_switch(gscr.win, scscr.win, stdscr, 0);
 	ball->x = gscr.x / 2;
 	ball->y = gscr.y / 2;
-	ball->vx = 1 + (rand_int(100) % 2) * (-2);
+	ball->vx = rand_negative();
 	ball->vy = 0;
 	ps->x1 = 1;
 	ps->y1 = gscr.y / 2 - BAR_LEN / 2;
@@ -77,7 +77,7 @@ void	start_game(t_screen stsc)
 			break ;
 		move_ball(&ball, &players, game_scr);
 		update_window(game_scr, ball, players);
-		usleep(DELAY);
+		usleep(DELAY - (players.returns_nb) * 1000);
 	}
 	nodelay_switch(game_scr.win, score_scr.win, stsc.win, 0);
 	delwin(score_scr.win);

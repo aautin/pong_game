@@ -16,7 +16,8 @@ SRC = ./src/main.c \
 	  ./src/ball.c \
 	  ./src/score.c \
 	  ./src/file_treatment.c \
-	  ./src/convert_types.c
+	  ./src/convert_types.c \
+	  ./src/random.c
 
 OBJ = $(SRC:.c=.o)
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs_header.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aautin <ezagof@gmail.com>                  +#+  +:+       +#+        */
+/*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:30:50 by aautin            #+#    #+#             */
-/*   Updated: 2023/08/03 21:14:21 by aautin           ###   ########.fr       */
+/*   Updated: 2023/08/05 21:38:11 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ typedef struct s_file {
 
 typedef struct s_ball {
 	char	c;
-	int		x;
-	int		y;
-	int		vx;
-	int		vy;
+	float	x;
+	float	y;
+	float	vx;
+	float	vy;
 }	t_ball;
 
 typedef struct s_players {
