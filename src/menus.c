@@ -12,28 +12,31 @@
 
 #include "../headers/main_header.h"
 
-void	main_menu(t_screen stsc)
+void	main_menu(t_screen st)
 {
 	int		ch;
+	t_players	ps;
 
 	while (1)
 	{
 		clear();
 		refresh();
-		print_menu_middle(stsc, "designs/start.txt");
-		wprint_wall_board(stsc.win, stsc.y, stsc.x);
+		print_menu_middle(st, "designs/start.txt");
+		wprint_wall_board(st.win, st.y, st.x);
 		ch = getch();
 		if (ch == '\n')
 		{
-			start_game(stsc);
+			start_game(st, &ps);
 			clear();
-			print_menu_middle(stsc, "designs/end.txt");
+			print_menu_middle(st, "designs/end.txt");
+			mvwprintw(st.win, (st.y / 2) - 1, (st.x / 2) - 12, "%d", ps.score1);
+			mvwprintw(st.win, (st.y / 2) - 1, (st.x / 2) + 22, "%d", ps.score2);
 			ch = getch();
 		}
 		else if (ch == 'i' || ch == 'I')
 		{
 			clear();
-			print_menu_middle(stsc, "designs/infos.txt");
+			print_menu_middle(st, "designs/infos.txt");
 			ch = getch();
 			clear();
 		}

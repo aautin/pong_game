@@ -18,7 +18,6 @@ int		ft_atoi(char *number)
 	int		nb;
 
 	i = 0;
-
 	while ('0' > number[i] || number[i] > '9')
 		i++;
 	nb = 0;
@@ -35,8 +34,12 @@ char	*ft_itoa(int number)
 	int		i;
 	int		size;
 	char	*str;
+	int		temp;
 
+	temp = number;
 	size = 0;
+	if (number == 0)
+		size++;
 	while(number)
 	{
 		number = number / 10;
@@ -45,11 +48,23 @@ char	*ft_itoa(int number)
 	str = (char *)malloc((size + 1) * sizeof(char));
 	str[size] = '\0';
 	i = 0;
-	while(i >= 0)
+	while(i < size)
 	{
-		str[i] = number;
+		str[size - i - 1] = (temp % 10) + 48;
+		temp = temp / 10;
 		i++;
 	}
 	return (str);
-	// to be continued...
+}
+
+void	get_date(t_date *date)
+{
+	time_t	now;
+	struct tm *info_time;
+
+	time(&now);
+	info_time = localtime(&now);
+	date->year = info_time->tm_year + 1900;
+	date->month = info_time->tm_mon + 1;
+	date->day = info_time->tm_mday;
 }
