@@ -21,3 +21,21 @@ precisely at this time to honour our usual schedule (42's thing).
 The allowed libraries are those : fcntl.h (open, close), unistd.h (write, read),
 stdlib.h (malloc, free), the time.h library and ncurses.h (everything we need to
 handle the keyboard inputs).
+
+# How to play
+
+## Compilation
+
+The Makefile will compile the program with the following command :
+
+```make```
+
+![make](./materials/make.gif)
+
+## Execution
+
+To play the game, you just have to run the following command :
+
+```./pong_game```
+
+![play](./materials/play.gif)
