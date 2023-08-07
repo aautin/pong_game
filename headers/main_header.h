@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 20:30:50 by yahan             #+#    #+#             */
-/*   Updated: 2023/08/05 22:18:32 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/07 17:54:22 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,8 @@ int		ft_atoi(char *number);
 void	get_date(t_date *date);
 
 // random.c
-int		rand_int(int max); // to be removed
-float	rand_float(int max);
-float	rand_negative(void);
+int		rand_int(int max);
+// float	rand_float(int max);
+int		rand_negative(void);
 
 #endif

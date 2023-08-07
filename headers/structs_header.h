@@ -6,7 +6,7 @@
 /*   By: yahan <yahanhsiao@gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/03 20:30:50 by aautin            #+#    #+#             */
-/*   Updated: 2023/08/05 21:38:11 by yahan            ###   ########.fr       */
+/*   Updated: 2023/08/07 17:56:08 by yahan            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ typedef struct s_file {
 
 typedef struct s_ball {
 	char	c;
-	float	x;
-	float	y;
-	float	vx;
-	float	vy;
+	int	x;
+	int	y;
+	int	vx;
+	int	vy;
 }	t_ball;
 
 typedef struct s_players {
