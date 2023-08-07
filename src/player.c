@@ -46,6 +46,9 @@ void	move_players(int ch, t_players *players, t_screen gscr)
 
 int	compl_or_add(t_screen gscr, t_screen *scscr, t_ball *b, t_players *ps)
 {
+	int		temp;
+
+	temp = ps->returns_nb;
 	if (b->x == 0 || b->x == gscr.x - 1)
 	{
 		if (b->x == 0)
@@ -55,7 +58,7 @@ int	compl_or_add(t_screen gscr, t_screen *scscr, t_ball *b, t_players *ps)
 		if (ps->score1 == 3 || ps->score2 == 3)
 			return (1);
 		init_game(gscr, *scscr, b, ps);
-		update_score(*ps, scscr);
+		update_score(*ps, scscr, temp);
 	}
 	return (0);
 }

@@ -55,7 +55,7 @@ void	init_game(t_screen gscr, t_screen scscr, t_ball *ball, t_players *ps)
 	wrefresh(scscr.win);
 }
 
-void	start_game(t_screen stsc)
+void	start_game(t_screen stsc, t_players *ps)
 {
 	int			ch;
 	t_ball		ball;
@@ -67,7 +67,7 @@ void	start_game(t_screen stsc)
 	players.score2 = 0;
 	init_screens(&game_scr, &score_scr, &stsc);
 	init_game(game_scr, score_scr, &ball, &players);
-	update_score(players, &score_scr);
+	update_score(players, &score_scr, players.returns_nb);
 	while (1)
 	{
 		ch = getch();
@@ -79,6 +79,8 @@ void	start_game(t_screen stsc)
 		update_window(game_scr, ball, players);
 		usleep(DELAY - (players.returns_nb) * 1000);
 	}
+	ps->score1 = players.score1;
+	ps->score2 = players.score2;
 	nodelay_switch(game_scr.win, score_scr.win, stsc.win, 0);
 	delwin(score_scr.win);
 	delwin(game_scr.win);

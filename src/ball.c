@@ -34,6 +34,7 @@ void	move_ball(t_ball *b, t_players *ps, t_screen game_scr)
 		b->vy = rand_float(1);
 		b->vx *= -1.0;
 		ps->returns_nb++;
+		mvwprintw(game_scr.win, game_scr.y - 1, 0, "%d", ps->returns_nb);
 	}
 	b->x += b->vx;
 	b->y += b->vy;

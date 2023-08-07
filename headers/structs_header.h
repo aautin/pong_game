@@ -15,6 +15,12 @@
 
 # include <ncurses.h>
 
+typedef struct s_date {
+	int		day;
+	int		month;
+	int		year;
+}	t_date;
+
 typedef struct s_file {
 	char	*content;
 	char	*name;

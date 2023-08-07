@@ -25,15 +25,14 @@
 # define BAR "|"
 # define BALL "o"
 # define BAR_LEN 4
-# define DELAY 20000
+# define DELAY 40000
 
 // menus.c
 void	main_menu(t_screen stsc);
 void	print_menu_middle(t_screen sc, char *fl_name);
-void	update_score(t_players players, t_screen *sc_scr);
 
 // game.c
-void	start_game(t_screen stsc);
+void	start_game(t_screen stsc, t_players *ps);
 void	init_screens(t_screen *gscr, t_screen *scscr, t_screen *stsc);
 void	init_game(t_screen gscr, t_screen scscr, t_ball *ball, t_players *ps);
 void	update_window(t_screen gscr, t_ball ball, t_players players);
@@ -48,7 +47,10 @@ void	move_players(int ch, t_players *players, t_screen gscr);
 int		compl_or_add(t_screen gscr, t_screen *scscr, t_ball *b, t_players *ps);
 
 // score.c
-void	update_score(t_players players, t_screen *sc_scr);
+void	update_score(t_players players, t_screen *sc_scr, int returns_nb);
+void	update_rally_file(int game_score);
+void	update_best_rally(t_file rally, int game_score, t_date *date);
+void	update_date(t_date *date);
 
 // utils.c
 int		ft_strlen(char *str);
@@ -65,6 +67,7 @@ char	*file_name_to_its_v2(char *fl_name);
 // convert_types.c
 char	*ft_itoa(int	number);
 int		ft_atoi(char *number);
+void	get_date(t_date *date);
 
 // random.c
 int		rand_int(int max); // to be removed
